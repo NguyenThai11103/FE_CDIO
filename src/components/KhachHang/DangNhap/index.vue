@@ -1,458 +1,423 @@
 <template>
-    <div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
-                <div class="col mx-auto">
-                    <div class="card">
-                        <input value="" class="blind-check" type="checkbox" id="blind-input" name="blindcheck"
-                            hidden="" />
+    <div class="login-container">
+        <!-- Background Animation -->
+        <div class="background-animations">
+            <div class="food-icon" v-for="n in 8" :key="n"></div>
+        </div>
 
-                        <label for="blind-input" class="blind_input">
-                            <span class="hide">Hide</span>
-                            <span class="show">Show</span>
-                        </label>
-
-                        <form class="form">
-                            <div class="title">Sign In</div>
-
-                            <label class="label_input" for="email-input">Email</label>
-                            <input spellcheck="false" class="input" type="email" name="email" id="email-input" />
-
-                            <div class="frg_pss">
-                                <label class="label_input" for="password-input">Password</label>
-                                <a href="">Forgot password?</a>
+        <div class="login-box">
+            <div class="glass-effect"></div>
+            <div class="login-content">
+                <div class="login-header">
+                    <div class="logo-wrapper">
+                        <div class="logo-circle">
+                            <div class="logo-inner-circle">
+                                <span class="logo-text">F</span>
                             </div>
-                            <input spellcheck="false" class="input" type="text" name="password" id="password-input" />
-                            <button class="submit" type="button">Submit</button>
-                        </form>
+                            <div class="logo-ring"></div>
+                            <div class="logo-ring"></div>
+                            <div class="logo-ring"></div>
+                        </div>
+                    </div>
+                    <h2 class="welcome-text">Welcome to <span class="brand-text">FoodZone</span></h2>
+                    <p class="subtitle">Khám phá thế giới ẩm thực tuyệt vời</p>
+                </div>
 
-                        <label for="blind-input" class="avatar">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 64 64"
-                                id="monkey">
-                                <ellipse cx="53.7" cy="33" rx="8.3" ry="8.2" fill="#89664c"></ellipse>
-                                <ellipse cx="53.7" cy="33" rx="5.4" ry="5.4" fill="#ffc5d3"></ellipse>
-                                <ellipse cx="10.2" cy="33" rx="8.2" ry="8.2" fill="#89664c"></ellipse>
-                                <ellipse cx="10.2" cy="33" rx="5.4" ry="5.4" fill="#ffc5d3"></ellipse>
-                                <g fill="#89664c">
-                                    <path
-                                        d="m43.4 10.8c1.1-.6 1.9-.9 1.9-.9-3.2-1.1-6-1.8-8.5-2.1 1.3-1 2.1-1.3 2.1-1.3-20.4-2.9-30.1 9-30.1 19.5h46.4c-.7-7.4-4.8-12.4-11.8-15.2">
-                                    </path>
-                                    <path
-                                        d="m55.3 27.6c0-9.7-10.4-17.6-23.3-17.6s-23.3 7.9-23.3 17.6c0 2.3.6 4.4 1.6 6.4-1 2-1.6 4.2-1.6 6.4 0 9.7 10.4 17.6 23.3 17.6s23.3-7.9 23.3-17.6c0-2.3-.6-4.4-1.6-6.4 1-2 1.6-4.2 1.6-6.4">
-                                    </path>
-                                </g>
-                                <path
-                                    d="m52 28.2c0-16.9-20-6.1-20-6.1s-20-10.8-20 6.1c0 4.7 2.9 9 7.5 11.7-1.3 1.7-2.1 3.6-2.1 5.7 0 6.1 6.6 11 14.7 11s14.7-4.9 14.7-11c0-2.1-.8-4-2.1-5.7 4.4-2.7 7.3-7 7.3-11.7"
-                                    fill="#e0ac7e"></path>
-                                <g fill="#3b302a" class="monkey-eye-nose">
-                                    <path
-                                        d="m35.1 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.6.1 1 1 1 2.1">
-                                    </path>
-                                    <path
-                                        d="m30.9 38.7c0 1.1-.4 2.1-1 2.1-.6 0-1-.9-1-2.1 0-1.1.4-2.1 1-2.1.5.1 1 1 1 2.1">
-                                    </path>
-                                    <ellipse cx="40.7" cy="31.7" rx="3.5" ry="4.5" class="monkey-eye-r"></ellipse>
-                                    <ellipse cx="23.3" cy="31.7" rx="3.5" ry="4.5" class="monkey-eye-l"></ellipse>
-                                </g>
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 64 64"
-                                id="monkey-hands">
-                                <path fill="#89664C" d="M9.4,32.5L2.1,61.9H14c-1.6-7.7,4-21,4-21L9.4,32.5z"></path>
-                                <path fill="#FFD6BB" d="M15.8,24.8c0,0,4.9-4.5,9.5-3.9c2.3,0.3-7.1,7.6-7.1,7.6s9.7-8.2,11.7-5.6c1.8,2.3-8.9,9.8-8.9,9.8
-	s10-8.1,9.6-4.6c-0.3,3.8-7.9,12.8-12.5,13.8C11.5,43.2,6.3,39,9.8,24.4C11.6,17,13.3,25.2,15.8,24.8"></path>
-                                <path fill="#89664C" d="M54.8,32.5l7.3,29.4H50.2c1.6-7.7-4-21-4-21L54.8,32.5z"></path>
-                                <path fill="#FFD6BB" d="M48.4,24.8c0,0-4.9-4.5-9.5-3.9c-2.3,0.3,7.1,7.6,7.1,7.6s-9.7-8.2-11.7-5.6c-1.8,2.3,8.9,9.8,8.9,9.8
-	s-10-8.1-9.7-4.6c0.4,3.8,8,12.8,12.6,13.8c6.6,1.3,11.8-2.9,8.3-17.5C52.6,17,50.9,25.2,48.4,24.8"></path>
-                            </svg>
-                        </label>
+                <form @submit.prevent="Login" class="login-form">
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input 
+                                v-model="user.email" 
+                                type="email" 
+                                placeholder="Email của bạn"
+                                required
+                            >
+                            <span class="input-line"></span>
+                        </div>
                     </div>
 
-                </div>
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input 
+                                v-model="user.password" 
+                                type="password" 
+                                placeholder="Mật khẩu"
+                                required
+                            >
+                            <span class="input-line"></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        <span>Đăng Nhập</span>
+                        <div class="btn-overlay"></div>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <div class="form-footer">
+                        <a href="#" class="forgot-link">
+                            <i class="fas fa-key"></i>
+                            <span>Quên mật khẩu?</span>
+                        </a>
+                        <div class="divider">
+                            <span>hoặc</span>
+                        </div>
+                        <router-link to="/khach-hang/dang-ky" class="register-link">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Tạo tài khoản mới</span>
+                        </router-link>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </template>
-<script>
-export default {
 
-}
-</script>
 <style scoped>
-.section-authentication-signin {
+.login-container {
     min-height: 100vh;
-    background: #f8f9fa;
-}
-
-.card {
-    --p: 32px;
-    --h-form: auto;
-    --w-form: 380px;
-    --input-px: 0.75rem;
-    --input-py: 0.65rem;
-    --submit-h: 38px;
-    --blind-w: 64px;
-    --space-y: 0.5rem;
-    width: var(--w-form);
-    height: var(--h-form);
-    max-width: 100%;
-    border-radius: 16px;
-    background: white;
-    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-    overflow-y: auto;
-    padding: var(--p);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    margin: 2rem auto;
-}
-
-.avatar {
-    --sz-avatar: 166px;
-    order: 0;
-    width: var(--sz-avatar);
-    min-width: var(--sz-avatar);
-    max-width: var(--sz-avatar);
-    height: var(--sz-avatar);
-    min-height: var(--sz-avatar);
-    max-height: var(--sz-avatar);
-    border: 1px solid #707070;
-    border-radius: 9999px;
-    overflow: hidden;
-    cursor: pointer;
-    z-index: 2;
-    perspective: 80px;
-    position: relative;
-    margin: 0;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    --sz-svg: calc(var(--sz-avatar) - 10px);
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B649);
+    background-size: 300% 300%;
+    animation: gradientBG 20s ease infinite;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
-.avatar svg {
+.background-animations {
     position: absolute;
-    transition:
-        transform 0.2s ease-in,
-        opacity 0.1s;
-    transform-origin: 50% 100%;
-    height: var(--sz-svg);
-    width: var(--sz-svg);
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
 }
 
-.avatar svg#monkey {
+.food-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    animation: floatIcon 10s infinite linear;
+}
+
+.food-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.food-icon:nth-child(2) { top: 20%; right: 20%; animation-delay: 2s; }
+.food-icon:nth-child(3) { bottom: 30%; left: 30%; animation-delay: 4s; }
+.food-icon:nth-child(4) { bottom: 40%; right: 40%; animation-delay: 6s; }
+.food-icon:nth-child(5) { top: 50%; left: 50%; animation-delay: 8s; }
+.food-icon:nth-child(6) { bottom: 60%; right: 60%; animation-delay: 10s; }
+.food-icon:nth-child(7) { top: 70%; left: 70%; animation-delay: 12s; }
+.food-icon:nth-child(8) { bottom: 80%; right: 80%; animation-delay: 14s; }
+
+.login-box {
+    width: 100%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 35px 60px rgba(0, 0, 0, 0.3);
+}
+
+.glass-effect {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.1) 20%,
+        transparent 100%
+    );
+    animation: rotateGlass 10s linear infinite;
+}
+
+.login-content {
+    position: relative;
+    padding: 40px;
     z-index: 1;
 }
 
-.avatar svg#monkey-hands {
-    z-index: 2;
-    transform-style: preserve-3d;
-    transform: translateY(calc(var(--sz-avatar) / 1.25)) rotateX(-21deg);
-}
-
-.avatar::before {
-    content: "";
-    border-radius: 45%;
-    width: calc(var(--sz-svg) / 3.889);
-    height: calc(var(--sz-svg) / 5.833);
-    border: 0;
-    border-bottom: calc(var(--sz-svg) * (4 / 100)) solid #3c302a;
-    bottom: 20%;
-
-    position: absolute;
-    transition: all 0.2s ease;
-    z-index: 3;
-}
-
-.blind-check:checked~.avatar::before {
-    width: calc(var(--sz-svg) * (9 / 100));
-    height: 0;
-    border-radius: 50%;
-    border-bottom: calc(var(--sz-svg) * (10 / 100)) solid #3c302a;
-}
-
-.avatar svg#monkey .monkey-eye-r,
-.avatar svg#monkey .monkey-eye-l {
-    animation: blink 10s 1s infinite;
-    transition: all 0.2s ease;
-}
-
-@keyframes blink {
-
-    0%,
-    2%,
-    4%,
-    26%,
-    28%,
-    71%,
-    73%,
-    100% {
-        ry: 4.5;
-        cy: 31.7;
-    }
-
-    1%,
-    3%,
-    27%,
-    72% {
-        ry: 0.5;
-        cy: 30;
-    }
-}
-
-.blind-check:checked~.avatar svg#monkey .monkey-eye-r,
-.blind-check:checked~.avatar svg#monkey .monkey-eye-l {
-    ry: 0.5;
-    cy: 30;
-}
-
-.blind-check:checked~.avatar svg#monkey-hands {
-    transform: translate3d(0, 0, 0) rotateX(0deg);
-}
-
-.avatar svg#monkey,
-.avatar::before,
-.avatar svg#monkey .monkey-eye-nose,
-.avatar svg#monkey .monkey-eye-r,
-.avatar svg#monkey .monkey-eye-l {
-    transition: all 0.2s ease;
-}
-
-.blind-check:checked~.form:focus-within~.avatar svg#monkey,
-.blind-check:checked~.form:focus-within~.avatar::before,
-.blind-check:checked~.form:focus-within~.avatar svg#monkey .monkey-eye-nose,
-.blind-check:checked~.form:focus-within~.avatar svg#monkey .monkey-eye-r,
-.blind-check:checked~.form:focus-within~.avatar svg#monkey .monkey-eye-l {
-    animation: none;
-}
-
-.form:focus-within~.avatar svg#monkey {
-    animation: slick 3s ease infinite 1s;
-    --center: rotateY(0deg);
-    --left: rotateY(-4deg);
-    --right: rotateY(4deg);
-}
-
-.form:focus-within~.avatar::before,
-.form:focus-within~.avatar svg#monkey .monkey-eye-nose,
-.blind-check:not(:checked)~.form:focus-within~.avatar svg#monkey .monkey-eye-r,
-.blind-check:not(:checked)~.form:focus-within~.avatar svg#monkey .monkey-eye-l {
-    ry: 3;
-    cy: 35;
-    animation: slick 3s ease infinite 1s;
-    --center: translateX(0);
-    --left: translateX(-0.5px);
-    --right: translateX(0.5px);
-}
-
-@keyframes slick {
-
-    0%,
-    100% {
-        transform: var(--center);
-    }
-
-    25% {
-        transform: var(--left);
-    }
-
-    75% {
-        transform: var(--right);
-    }
-}
-
-.card label.blind_input {
-    -webkit-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    z-index: 4;
-    position: absolute;
-    border: none;
-    right: calc(var(--p) + (var(--input-px) / 2));
-    bottom: calc(var(--p) + var(--submit-h) + var(--space-y) + (var(--input-py) / 1) + 3px);
-    padding: 4px 0;
-    width: var(--blind-w);
-    border-radius: 4px;
-    background-color: #fff;
-    color: #4d4d4d;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.card label.blind_input:before {
-    content: "";
-    position: absolute;
-    left: calc((var(--input-px) / 2) * -1);
-    top: 0;
-    height: 100%;
-    width: 1px;
-    background: #8f8f8f;
-}
-
-button {
-    background-color: #eee;
-    border: none;
-    padding: 1rem;
-    font-size: 1rem;
-    width: 10em;
-    border-radius: 1rem;
-    color: lightcoral;
-    box-shadow: 0 0.4rem #dfd9d9;
-    cursor: pointer;
-}
-
-button:active {
-    color: white;
-    box-shadow: 0 0.2rem #dfd9d9;
-    transform: translateY(0.2rem);
-}
-
-button:hover:not(:disabled) {
-    background: lightcoral;
-    color: white;
-    text-shadow: 0 0.1rem #bcb4b4;
-}
-
-button:disabled {
-    cursor: auto;
-    color: grey;
-}
-
-.card label.blind_input:hover {
-    color: #262626;
-    background-color: #f2f2f2;
-}
-
-.blind-check~label.blind_input span.show,
-.blind-check:checked~label.blind_input span.hide {
-    display: none;
-}
-
-.blind-check~label.blind_input span.hide,
-.blind-check:checked~label.blind_input span.show {
-    display: block;
-}
-
-.form {
-    order: 1;
+.logo-circle {
+    width: 90px;
+    height: 90px;
     position: relative;
+    margin: 0 auto 30px;
+}
+
+.logo-inner-circle {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-    width: 100%;
+    justify-content: center;
+    animation: pulse 2s infinite;
 }
 
-.form .title {
-    width: 100%;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    padding-top: 0;
-    padding-bottom: 1rem;
-    color: rgba(0, 0, 0, 0.7);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+.logo-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: expandRing 2s infinite;
 }
 
-.form .label_input {
-    white-space: nowrap;
+.logo-ring:nth-child(2) { width: 100%; height: 100%; animation-delay: 0.5s; }
+.logo-ring:nth-child(3) { width: 120%; height: 120%; animation-delay: 1s; }
+.logo-ring:nth-child(4) { width: 140%; height: 140%; animation-delay: 1.5s; }
+
+.logo-text {
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.brand-text {
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.8);
     font-size: 1rem;
-    margin-top: calc(var(--space-y) / 2);
-    color: rgba(0, 0, 0, 0.9);
-    font-weight: 600;
-    display: inline;
-    text-align: left;
-    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.input-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 5px;
+    margin-bottom: 20px;
     position: relative;
-    z-index: 99;
-    -webkit-user-select: none;
-    user-select: none;
+    overflow: hidden;
 }
 
-.form .input {
-    resize: vertical;
-    background: white;
-    border: 1px solid #8f8f8f;
-    border-radius: 6px;
-    outline: none;
-    padding: var(--input-py) var(--input-px);
-    font-size: 18px;
+.input-wrapper i {
+    color: white;
+    font-size: 1.2rem;
+    margin: 0 15px;
+}
+
+.input-wrapper input {
+    background: transparent;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 1rem;
+    width: calc(100% - 50px);
+}
+
+.input-wrapper input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.input-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    color: #000000b3;
-    margin: var(--space-y) 0;
-    transition: all 0.25s ease;
+    height: 2px;
+    background: linear-gradient(90deg, #FF6B6B, #4ECDC4);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
-.form .input#password-input {
-    padding-right: calc(var(--blind-w) + var(--input-px) + 4px);
+.input-wrapper:focus-within .input-line {
+    transform: scaleX(1);
 }
 
-.form .input:focus {
-    border: 1px solid #0969da;
-    outline: 0;
-    box-shadow: 0 0 0 2px #0969da;
-}
-
-.form .frg_pss {
+.login-btn {
     width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-overlay {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.login-btn:hover .btn-overlay {
+    left: 100%;
+}
+
+.form-footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.forgot-link, .register-link {
+    color: white;
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
-.form .frg_pss a {
-    background-color: transparent;
-    cursor: pointer;
-    text-decoration: underline;
-    transition: color 0.25s ease;
-    color: #000000b3;
-    font-weight: 500;
-    float: right;
+.forgot-link:hover, .register-link:hover {
+    transform: translateY(-2px);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.form .frg_pss a:hover {
-    color: #000;
-}
-
-.form .submit {
-    height: var(--submit-h);
-    width: 100%;
-    outline: none;
-    cursor: pointer;
-    background-color: #fff;
-    background-image: linear-gradient(-180deg,
-            rgba(255, 255, 255, 0.09) 0%,
-            rgba(17, 17, 17, 0.04) 100%);
-    border: 1px solid rgba(22, 22, 22, 0.2);
-    font-weight: 500;
-    letter-spacing: 0.25px;
-    color: #000;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 1rem;
+.divider {
+    margin: 20px 0;
+    position: relative;
     text-align: center;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    -webkit-appearance: button;
-    appearance: button;
-    margin: var(--space-y) 0 0;
 }
 
-.form .submit:hover {
-    background-image: linear-gradient(-180deg,
-            rgba(255, 255, 255, 0.18) 0%,
-            rgba(17, 17, 17, 0.08) 100%);
-    border: 1px solid rgba(22, 22, 22, 0.2);
-    color: #111;
+.divider span {
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
 }
 
-.blind-check:checked~.form .input[type="text"] {
-    /* text-emphasis: circle; */
-    -webkit-text-security: disc;
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes floatIcon {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(100px, -100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes expandRing {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes rotateGlass {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(0.95); }
+}
+
+@media (max-width: 480px) {
+    .login-content {
+        padding: 30px 20px;
+    }
+    
+    .welcome-text {
+        font-size: 1.5rem;
+    }
+    
+    .logo-circle {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .logo-text {
+        font-size: 2.5rem;
+    }
 }
 </style>
+
+<script>
+import axios from 'axios';
+
+export default {
+    data() {
+        return {
+            user: {
+                email: '',
+                password: ''
+            }
+        }
+    },
+    methods: {
+        Login() {
+            axios
+                .post("http://127.0.0.1:8000/api/khach-hang/dang-nhap", this.user)
+                .then((res) => {
+                    if (res.data.status) {
+                        this.$toast.success(res.data.message);
+                        localStorage.setItem('khach_hang_login', res.data.token);
+						this.$router.push('/');
+                    } else {
+                        this.$toast.error(res.data.message);
+                    }
+                })
+                .catch((res) => {
+                    const list = Object.values(res.response.data.errors);
+                    list.forEach((v, i) => {
+                        this.$toast.error(v[0]);
+                    });
+                })
+        }
+    },
+}
+</script>
