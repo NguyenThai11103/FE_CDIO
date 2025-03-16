@@ -81,6 +81,49 @@ const routes = [
         component: () => import("../components/KhachHang/DonHang/index.vue"),
         meta: { layout: "client" },
       },
+      // quán ăn
+      {
+        path: "/quan-an/dang-ky",
+        component: () => import("../components/QuanAn/DangKy/index.vue"),
+        meta: { layout: "blank" },
+      },
+      {
+        path: "/quan-an/dang-nhap",
+        component: () => import("../components/QuanAn/DangNhap/index.vue"),
+        meta: { layout: "blank" },
+      },
+      {
+        path: "/quan-an/profile",
+        component: () => import("../components/QuanAn/Profile/index.vue"),
+        meta: { layout: "quan_an" },
+      },
+      {
+        path: "/quan-an/loai-mon-an",
+        component: () => import("../components/QuanAn/LoaiMonAn/index.vue"),
+        meta: { layout: "quan_an" },
+      },
+      {
+        path: "/quan-an/thong-ke/doanh-thu",
+        component: () => import("../components/QuanAn/ThongKe/DoanhThu/index.vue"),
+        meta: { layout: "quan_an" },
+      },
+      {
+        path: "/quan-an/danh-muc",
+        component: () => import("../components/QuanAn/DanhMuc/index.vue"),
+        meta: { layout: "quan_an" },
+      },
+      {
+        path: "/quan-an/mon-an",
+        component: () => import("../components/QuanAn/MonAn/index.vue"),
+        meta: { layout: "quan_an" },
+      },
+      {
+        path: "/quan-an/voucher",
+        component: () => import("../components/QuanAn/Voucher/index.vue"),
+        meta: { layout: "quan_an" },
+      },
+      
+      
 ]
 
 const router = createRouter({

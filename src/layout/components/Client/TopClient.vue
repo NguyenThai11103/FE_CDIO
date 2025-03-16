@@ -376,17 +376,66 @@
 							<a class="dropdown-item" href="/khach-hang/profile"><i class="bx bx-user"></i><span>Profile</span></a>
 						</router-link>
 					</li>
-					<li><a class="dropdown-item" href="javascript:;"><i
+					<li><a v-on:click="logout()" class="dropdown-item" href="javascript:;"><i
 								class='bx bx-log-out-circle'></i><span>Logout</span></a>
 					</li>
+					<li><a v-on:click="logoutAll()" class="dropdown-item" href="javascript:;"><i
+									class='bx bx-log-out-circle'></i><span>Đăng Xuất Tất Cả</span></a>
+						</li>
 				</ul>
 			</div>
 		</nav>
 	</div>
 </template>
 <script>
-export default {
+import axios from 'axios';
 
+export default {
+	data() {
+		return {
+			user: {},
+		}
+	},
+	methods: {
+		logout(){
+			axios
+				.get('http://127.0.0.1:8000/api/khach-hang/dang-xuat', {
+                    headers : {
+                        Authorization: 'Bearer ' + localStorage.getItem("khach_hang_login")
+                    }
+                })
+				.then((res)=>{
+					if(res.data.status){
+						localStorage.removeItem('khach_hang_login');
+						this.$toast.success(res.data.message);
+						this.$router.push('/khach-hang/dang-nhap')
+					}
+					else{
+						this.$toast.error('Có lỗi xảy ra')
+					}
+				})
+		},
+		logoutAll(){
+			axios
+				.get('http://127.0.0.1:8000/api/khach-hang/dang-xuat-all', {
+                    headers : {
+                        Authorization: 'Bearer ' + localStorage.getItem("khach_hang_login")
+                    }
+                })
+				.then((res)=>{
+					if(res.data.status){
+						localStorage.removeItem('khach_hang_login');
+						this.$toast.success(res.data.message);
+						this.$router.push('/khach-hang/dang-nhap')
+					}else{
+						this.$toast.error(res.data.message)
+					}
+				})
+				.catch((res) =>{
+					this.$toast.error('Đã xảy ra lỗi')
+				})
+		}	
+	},
 }
 </script>
 <style scoped>

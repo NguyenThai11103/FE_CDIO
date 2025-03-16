@@ -4,13 +4,18 @@ import router from './router'
 import Default from './layout/wrapper/Admin/index.vue'
 import Client from './Layout/Wrapper/Client/index.vue'
 import Blank from './Layout/Wrapper/Blank/index.vue'
-import QuanAn from './Layout/Wrapper/QuanAn/index.vue'
 import Shipper from './layout/wrapper/Shipper/index.vue'
+import QuanAn from './Layout/Wrapper/QuanAn/index.vue'
 import Auth from './layout/wrapper/Auth/index.vue'
 import Toaster from "@meforma/vue-toaster";
+import vue3GoogleLogin from 'vue3-google-login';
+
 const app = createApp(App)
 
 app.use(router)
+app.use(vue3GoogleLogin, {
+    clientId: '982150332470-3hga4s908dup4ecoqehfvrkegtij8rv6.apps.googleusercontent.com'
+})
 app.use(Toaster, {
     position: "top-right"
 });

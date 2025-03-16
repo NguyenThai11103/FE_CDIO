@@ -21,7 +21,7 @@
 						</a>
 					</router-link>
 				</li>
-				<!-- <li class="nav-item">
+				<li class="nav-item">
 					<router-link to="/quan-an/voucher">
 						<a class="nav-link" href="/quan-an/voucher">
 							<div class="parent-icon"><i class="fa-solid fa-ticket"></i>
@@ -62,7 +62,7 @@
 							</li>
 						</router-link>
 					</ul>
-				</li> -->
+				</li>
 			</ul>
 		</nav>
 	</div>

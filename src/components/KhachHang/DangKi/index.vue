@@ -285,10 +285,11 @@ export default {
     methods: {
         dangKi() {
             axios
-                .post('http://127.0.0.1:8000/api/khach-hang/register', this.dang_ki)
+                .post('http://127.0.0.1:8000/api/khach-hang/dang-ky', this.dang_ki)
                 .then((res) => {
                     if (res.data.status) {
                         this.$toast.success(res.data.message);
+						this.$router.push('/');
                         this.dang_ki = {
                             'email': "",
                             'so_dien_thoai': "",

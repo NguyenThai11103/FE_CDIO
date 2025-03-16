@@ -55,6 +55,9 @@
                         <div class="btn-overlay"></div>
                         <i class="fas fa-arrow-right"></i>
                     </button>
+                    <div class="col-12 mt-2">
+                            <GoogleLogin :callback="callback" style="width: 100%;" />
+                    </div>
 
                     <div class="form-footer">
                         <a href="#" class="forgot-link">
@@ -62,7 +65,7 @@
                             <span>Quên mật khẩu?</span>
                         </a>
                         <div class="divider">
-                            <span>hoặc</span>
+                            <span>hoặc đăng nhập với</span>
                         </div>
                         <router-link to="/khach-hang/dang-ky" class="register-link">
                             <i class="fas fa-user-plus"></i>
@@ -308,17 +311,87 @@
 }
 
 .divider {
+    text-align: center;
     margin: 20px 0;
     position: relative;
-    text-align: center;
 }
 
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: calc(50% - 70px);
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.divider::before { left: 0; }
+.divider::after { right: 0; }
+
 .divider span {
-    color: rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.1);
-    padding: 5px 15px;
+    padding: 8px 15px;
     border-radius: 20px;
+    color: rgba(255, 255, 255, 0.6);
     font-size: 0.9rem;
+}
+
+.social-login-container {
+    margin: 20px 0;
+}
+
+:deep(.google-login-button) {
+    width: 100% !important;
+    height: auto !important;
+    padding: 12px !important;
+    border-radius: 12px !important;
+    background: white !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden !important;
+}
+
+:deep(.google-login-button:hover) {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+:deep(.google-btn-content) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    font-size: 1rem !important;
+    color: #333 !important;
+}
+
+:deep(.google-btn-content i) {
+    font-size: 1.2rem !important;
+    color: #4285f4 !important;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    :deep(.google-login-button) {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+
+    :deep(.google-btn-content) {
+        color: white !important;
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+    :deep(.google-login-button) {
+        padding: 10px !important;
+    }
+
+    :deep(.google-btn-content) {
+        font-size: 0.9rem !important;
+    }
 }
 
 @keyframes gradientBG {
@@ -388,6 +461,7 @@
 
 <script>
 import axios from 'axios';
+import { decodeCredential } from 'vue3-google-login'
 
 export default {
     data() {
@@ -405,7 +479,7 @@ export default {
                 .then((res) => {
                     if (res.data.status) {
                         this.$toast.success(res.data.message);
-                        localStorage.setItem('khach_hang_login', res.data.token);
+                        localStorage.getItem("khach_hang_login");
 						this.$router.push('/');
                     } else {
                         this.$toast.error(res.data.message);
@@ -416,6 +490,23 @@ export default {
                     list.forEach((v, i) => {
                         this.$toast.error(v[0]);
                     });
+                })
+        },
+        callback(res) {
+            var user = {
+                "credential" : res.credential
+            }
+            axios
+                .post("http://127.0.0.1:8000/api/khach-hang/dang-nhap-google", user)
+                .then((res) => {
+                    if (res.data.status == 1) {
+                        this.$toast.success(res.data.message);
+                        localStorage.setItem("khach_hang_login", res.data.key);
+                        this.$router.push('/')
+                    }
+                    else {
+                        this.$toast.error(res.data.message);
+                    }
                 })
         }
     },
