@@ -28,7 +28,7 @@
                         <div class="input-wrapper">
                             <i class="fas fa-envelope"></i>
                             <input 
-                                v-model="user.email" 
+                                v-model="user_R1.email" 
                                 type="email" 
                                 placeholder="Email của bạn"
                                 required
@@ -41,7 +41,7 @@
                         <div class="input-wrapper">
                             <i class="fas fa-lock"></i>
                             <input 
-                                v-model="user.password" 
+                                v-model="user_R1.password" 
                                 type="password" 
                                 placeholder="Mật khẩu"
                                 required
@@ -466,7 +466,7 @@ import { decodeCredential } from 'vue3-google-login'
 export default {
     data() {
         return {
-            user: {
+            user_R1: {
                 email: '',
                 password: ''
             }
@@ -475,11 +475,11 @@ export default {
     methods: {
         Login() {
             axios
-                .post("http://127.0.0.1:8000/api/khach-hang/dang-nhap", this.user)
+                .post("http://127.0.0.1:8000/api/khach-hang/dang-nhap", this.user_R1)
                 .then((res) => {
                     if (res.data.status) {
                         this.$toast.success(res.data.message);
-                        localStorage.getItem("khach_hang_login");
+                        localStorage.setItem("khach_hang_login", res.data.key);
 						this.$router.push('/');
                     } else {
                         this.$toast.error(res.data.message);

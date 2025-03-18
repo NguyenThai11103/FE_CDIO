@@ -21,7 +21,6 @@
                     <p class="subtitle">Khám phá thế giới ẩm thực tuyệt vời cùng chúng tôi</p>
                 </div>
 
-                <form class="register-form">
                     <div class="form-group">
                         <div class="input-wrapper">
                             <i class="fas fa-user"></i>
@@ -70,7 +69,7 @@
                         </div>
                     </div>
 
-                    <button @click.prevent="dangKi" class="register-btn">
+                    <button v-on:click="dangKi()" class="register-btn">
                         <span>Đăng Ký Ngay</span>
                         <div class="btn-overlay"></div>
                         <i class="fas fa-arrow-right"></i>
@@ -82,7 +81,6 @@
                             <span>Đã có tài khoản? Đăng nhập</span>
                         </router-link>
                     </div>
-                </form>
             </div>
         </div>
     </div>
@@ -289,7 +287,7 @@ export default {
                 .then((res) => {
                     if (res.data.status) {
                         this.$toast.success(res.data.message);
-						this.$router.push('/');
+						this.$router.push('/khach-hang/dang-nhap');
                         this.dang_ki = {
                             'email': "",
                             'so_dien_thoai': "",
