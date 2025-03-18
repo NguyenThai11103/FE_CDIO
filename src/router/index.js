@@ -122,6 +122,38 @@ const routes = [
         component: () => import("../components/QuanAn/Voucher/index.vue"),
         meta: { layout: "quan_an" },
       },
+      // shipper
+      {
+        path: "/shipper/dang-ky",
+        component: () => import("../components/Shipper/DangKy/index.vue"),
+        meta: { layout: "auth" },
+      },
+    
+      {
+        path: "/shipper/dang-nhap",
+        component: () => import("../components/Shipper/DangNhap/index.vue"),
+        meta: { layout: "auth" },
+      },
+      {
+        path: "/shipper/don-dat-hang",
+        component: () => import("../components/Shipper/DonDatHang/index.vue"),
+        meta: { layout: "shipper" },
+      },
+      {
+        path: "/shipper/lich-su-giao-hang",
+        component: () => import("../components/Shipper/LichSuGiaoHang/index.vue"),
+        meta: { layout: "shipper" },
+      },
+      {
+        path: "/shipper/profile",
+        component: () => import("../components/Shipper/Profile/index.vue"),
+        meta: { layout: "shipper" },
+      },
+      {
+        path: "/shipper/thong-ke",
+        component: () => import("../components/Shipper/ThongKe/index.vue"),
+        meta: { layout: "shipper" },
+      },
       
       
 ]

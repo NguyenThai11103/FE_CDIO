@@ -11,7 +11,7 @@ export default function (to, from, next) {
     })
     .then((res) => {
       if (res.data.status) {
-        localStorage.setItem("ho_va_ten_quan_an", res.data.ten_quan_an);
+        localStorage.setItem("ten_quan_an_quan_an", res.data.ten_quan_an);
         next();
       } else {
         toaster.error(res.data.message);

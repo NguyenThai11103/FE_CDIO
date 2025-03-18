@@ -14,7 +14,7 @@ const app = createApp(App)
 
 app.use(router)
 app.use(vue3GoogleLogin, {
-    clientId: '982150332470-3hga4s908dup4ecoqehfvrkegtij8rv6.apps.googleusercontent.com'
+    clientId: '1012941706621-9tesdjalhnmb22e2golne8so022hlgvt.apps.googleusercontent.com'
 })
 app.use(Toaster, {
     position: "top-right"

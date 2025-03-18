@@ -363,7 +363,7 @@
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					<img src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-6/461281440_1242835037037746_2779086611324562668_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=qnX-0YialvUQ7kNvgHsIFNZ&_nc_oc=Adg-dhCWvtoVd-5U1_WfYjhU8HhJk4b-FtDL0RwkFGVqKGztk3JmAGcqB3hKXY9p3RA&_nc_zt=23&_nc_ht=scontent.fsgn2-9.fna&_nc_gid=AyCm3eYtytCC818gTAtqkx5&oh=00_AYD6TLTkrsgondOgyDSciYLc7Hr5D9SRaeFpMVwn187HiA&oe=678D41B5" class="user-img" alt="user avatar">
 					<div class="user-info ps-3">
-						<p class="user-name mb-0">Nhà Hàng Bé Thái</p>
+						<p class="user-name mb-0">Nhà Hàng Bé Thúi</p>
 						<p class="designattion mb-0">Quán ăn</p>
 					</div>
 				</a>
@@ -373,9 +373,13 @@
 							<a class="dropdown-item" href="/quan-an/profile"><i class="bx bx-user"></i><span>Profile</span></a>
 						</router-link>
 					</li>
-					<li><a class="dropdown-item" href="javascript:;"><i
+					
+					<li><a v-on:click="logout()" class="dropdown-item" href="javascript:;"><i
 								class='bx bx-log-out-circle'></i><span>Logout</span></a>
 					</li>
+					<li><a v-on:click="logoutAll()" class="dropdown-item" href="javascript:;"><i
+									class='bx bx-log-out-circle'></i><span>Đăng Xuất Tất Cả</span></a>
+						</li>
 				</ul>
 			</div>
 		</nav>
@@ -383,7 +387,53 @@
 </template>
 <script>
 export default {
-
+	data() {
+		return {
+			user: {},
+		}
+	},
+	mounted() {
+	},
+	methods: {
+		logout(){
+			axios
+				.get('http://127.0.0.1:8000/api/quan-an/dang-xuat', {
+                    headers : {
+                        Authorization: 'Bearer ' + localStorage.getItem("quan_an_login")
+                    }
+                })
+				.then((res)=>{
+					if(res.data.status){
+						localStorage.removeItem('quan_an_login');
+						this.$toast.success(res.data.message);
+						this.$router.push('/quan-an/dang-nhap')
+					}
+					else{
+						this.$toast.error('Có lỗi xảy ra')
+					}
+				})
+		},
+		logoutAll(){
+			axios
+				.get('http://127.0.0.1:8000/api/quan-an/dang-xuat-all', {
+                    headers : {
+                        Authorization: 'Bearer ' + localStorage.getItem("quan_an_login")
+                    }
+                })
+				.then((res)=>{
+					if(res.data.status){
+						localStorage.removeItem('quan_an_login');
+						this.$toast.success(res.data.message);
+						this.$router.push('/quan-an/dang-nhap')
+					}else{
+						this.$toast.error(res.data.message)
+					}
+				})
+				.catch((res) =>{
+					this.$toast.error('Đã xảy ra lỗi')
+				})
+		}	
+	},
 }
 </script>
 <style></style>
