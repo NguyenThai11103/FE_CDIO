@@ -28,7 +28,7 @@
                                             </div>
                                             <div class="form-group mb-3 col-lg-6">
                                                 <label>Mật khẩu</label>
-                                                <input v-model="quan_an_create.password" type="text"
+                                                <input v-model="quan_an_create.password" type="password"
                                                     class="form-control" placeholder="Mật khẩu">
                                             </div>
                                             <div class="form-group mb-3 col-lg-6">
@@ -280,8 +280,12 @@ export default {
                     this.layDataQuanAn();
 
                 })
-                .catch(error => {
-                    console.error(error);
+                .catch((errors) => {
+                    const listErrors = errors.response.data.errors;
+                    Object.values(listErrors).forEach((value) => {
+                        var thong_bao = '<b>Thông báo</b><span style="margin-top: 5px">' + value + '<span>';
+                        this.$toast.error(thong_bao);
+                    })
                 });
 
         },

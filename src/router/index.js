@@ -49,6 +49,11 @@ const routes = [
       meta: { layout: "blank" },
     },
     {
+      path: "/khach-hang/dang-nhap",
+      component: () => import("../components/KhachHang/DangNhap/index.vue"),
+      meta: { layout: "blank" },
+    },
+    {
         path: "/mon-an",
         component: () => import("../components/KhachHang/MonAn/index.vue"),
         meta : {layout : 'client'}

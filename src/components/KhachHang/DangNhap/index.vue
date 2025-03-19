@@ -78,6 +78,61 @@
     </div>
 </template>
 
+
+<script>
+import axios from 'axios';
+import { decodeCredential } from 'vue3-google-login'
+
+export default {
+    data() {
+        return {
+            user_R1: {
+                email: '',
+                password: ''
+            }
+        }
+    },
+    methods: {
+        Login() {
+            axios
+                .post("http://127.0.0.1:8000/api/khach-hang/dang-nhap", this.user_R1)
+                .then((res) => {
+                    if (res.data.status) {
+                        this.$toast.success(res.data.message);
+                        localStorage.setItem("khach_hang_login", res.data.key);
+						this.$router.push('/');
+                    } else {
+                        this.$toast.error(res.data.message);
+                    }
+                })
+                .catch((res) => {
+                    const list = Object.values(res.response.data.errors);
+                    list.forEach((v, i) => {
+                        this.$toast.error(v[0]);
+                    });
+                })
+        },
+        callback(res) {
+            var user = {
+                "credential" : res.credential
+            }
+            axios
+                .post("http://127.0.0.1:8000/api/khach-hang/dang-nhap-google", user)
+                .then((res) => {
+                    if (res.data.status == 1) {
+                        this.$toast.success(res.data.message);
+                        localStorage.setItem("khach_hang_login", res.data.key);
+                        this.$router.push('/')
+                    }
+                    else {
+                        this.$toast.error(res.data.message);
+                    }
+                })
+        }
+    },
+}
+</script>
+
 <style scoped>
 .login-container {
     min-height: 100vh;
@@ -458,57 +513,3 @@
     }
 }
 </style>
-
-<script>
-import axios from 'axios';
-import { decodeCredential } from 'vue3-google-login'
-
-export default {
-    data() {
-        return {
-            user_R1: {
-                email: '',
-                password: ''
-            }
-        }
-    },
-    methods: {
-        Login() {
-            axios
-                .post("http://127.0.0.1:8000/api/khach-hang/dang-nhap", this.user_R1)
-                .then((res) => {
-                    if (res.data.status) {
-                        this.$toast.success(res.data.message);
-                        localStorage.setItem("khach_hang_login", res.data.key);
-						this.$router.push('/');
-                    } else {
-                        this.$toast.error(res.data.message);
-                    }
-                })
-                .catch((res) => {
-                    const list = Object.values(res.response.data.errors);
-                    list.forEach((v, i) => {
-                        this.$toast.error(v[0]);
-                    });
-                })
-        },
-        callback(res) {
-            var user = {
-                "credential" : res.credential
-            }
-            axios
-                .post("http://127.0.0.1:8000/api/khach-hang/dang-nhap-google", user)
-                .then((res) => {
-                    if (res.data.status == 1) {
-                        this.$toast.success(res.data.message);
-                        localStorage.setItem("khach_hang_login", res.data.key);
-                        this.$router.push('/')
-                    }
-                    else {
-                        this.$toast.error(res.data.message);
-                    }
-                })
-        }
-    },
-}
-</script>
