@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router"; // cài vue-router:
 import checkLoginNhanVien from "./checkLoginNhanVien";
 
 const routes = [
+  
     {
         path : '/',
         component: ()=>import('../components/KhachHang/TrangChu/index.vue'),
@@ -41,11 +42,7 @@ const routes = [
         meta : {layout : 'blank' }
     },
     // khach hang
-    {
-        path : '/khach-hang/dang-nhap',
-        component: ()=>import('../components/KhachHang/DangNhap/index.vue'),
-        meta : {layout : 'blank' }
-    },
+    
     {
       path: "/khach-hang/dang-ky",
       component: () => import("../components/KhachHang/DangKi/index.vue"),

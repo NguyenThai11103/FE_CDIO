@@ -361,7 +361,6 @@
 			<div class="user-box dropdown">
 				<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					<img src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-6/461281440_1242835037037746_2779086611324562668_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=qnX-0YialvUQ7kNvgHsIFNZ&_nc_oc=Adg-dhCWvtoVd-5U1_WfYjhU8HhJk4b-FtDL0RwkFGVqKGztk3JmAGcqB3hKXY9p3RA&_nc_zt=23&_nc_ht=scontent.fsgn2-9.fna&_nc_gid=AyCm3eYtytCC818gTAtqkx5&oh=00_AYD6TLTkrsgondOgyDSciYLc7Hr5D9SRaeFpMVwn187HiA&oe=678D41B5" class="user-img" alt="user avatar">
 					<div class="user-info ps-3">
 						<p class="user-name mb-0">Nhà Hàng Bé Thúi</p>
 						<p class="designattion mb-0">Quán ăn</p>

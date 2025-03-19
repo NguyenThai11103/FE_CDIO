@@ -360,7 +360,6 @@
 			<div class="user-box dropdown">
 				<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					<img src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/482227647_1358639922123923_8419598614173034149_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=eJLD-8p8urMQ7kNvgEpCXgO&_nc_oc=Adg9ilLkjmu1-FRcwrSPYN29Xg8OunueXF48mrhXxl46J7HKXeisqpLtyoCjFnKQEWE&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&_nc_gid=r9y2RfsWiMB-bIArugIvRA&oh=00_AYEzCEGT7X3F9eD8gItyoze0HFVP0cEcvIGROetsOnLLaA&oe=67DEF807" class="user-img" alt="user avatar">
 					<div class="user-info ps-3">
 						<p class="user-name mb-0">Nguyễn Văn Nhân</p>
 						<p class="designattion mb-0">Shipper</p>
