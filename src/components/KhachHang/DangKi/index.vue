@@ -21,71 +21,125 @@
                     <p class="subtitle">Khám phá thế giới ẩm thực tuyệt vời cùng chúng tôi</p>
                 </div>
 
-                    <div class="form-group">
-                        <div class="input-wrapper">
-                            <i class="fas fa-user"></i>
-                            <input v-model="dang_ki.ho_va_ten" type="text" placeholder="Họ và tên" required>
-                            <span class="input-line"></span>
-                        </div>
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-user"></i>
+                        <input v-model="dang_ki.ho_va_ten" type="text" placeholder="Họ và tên" required>
+                        <span class="input-line"></span>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <div class="input-wrapper">
-                            <i class="fas fa-envelope"></i>
-                            <input v-model="dang_ki.email" type="email" placeholder="Email" required>
-                            <span class="input-line"></span>
-                        </div>
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input v-model="dang_ki.email" type="email" placeholder="Email" required>
+                        <span class="input-line"></span>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <div class="input-wrapper">
-                            <i class="fas fa-phone"></i>
-                            <input v-model="dang_ki.so_dien_thoai" type="number" placeholder="Số điện thoại" required>
-                            <span class="input-line"></span>
-                        </div>
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-phone"></i>
+                        <input v-model="dang_ki.so_dien_thoai" type="tel" pattern="[0-9]*" placeholder="Số điện thoại"
+                            required>
+                        <span class="input-line"></span>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <div class="input-wrapper">
-                            <i class="fas fa-calendar"></i>
-                            <input v-model="dang_ki.ngay_sinh" type="date" required>
-                            <span class="input-line"></span>
-                        </div>
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-calendar"></i>
+                        <input v-model="dang_ki.ngay_sinh" type="date" required>
+                        <span class="input-line"></span>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <div class="input-wrapper">
-                            <i class="fas fa-lock"></i>
-                            <input v-model="dang_ki.password" type="password" placeholder="Mật khẩu" required>
-                            <span class="input-line"></span>
-                        </div>
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input v-model="dang_ki.password" type="password" placeholder="Mật khẩu" required>
+                        <span class="input-line"></span>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <div class="input-wrapper">
-                            <i class="fas fa-key"></i>
-                            <input v-model="dang_ki.re_password" type="password" placeholder="Xác nhận mật khẩu" required>
-                            <span class="input-line"></span>
-                        </div>
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-key"></i>
+                        <input v-model="dang_ki.re_password" type="password" placeholder="Xác nhận mật khẩu" required>
+                        <span class="input-line"></span>
                     </div>
+                </div>
 
-                    <button v-on:click="dangKi()" class="register-btn">
-                        <span>Đăng Ký Ngay</span>
-                        <div class="btn-overlay"></div>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
+                <button v-on:click="dangKi()" class="register-btn">
+                    <span>Đăng Ký Ngay</span>
+                    <div class="btn-overlay"></div>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
 
-                    <div class="form-footer">
-                        <router-link to="/khach-hang/dang-nhap" class="login-link">
-                            <i class="fas fa-sign-in-alt"></i>
-                            <span>Đã có tài khoản? Đăng nhập</span>
-                        </router-link>
-                    </div>
+                <div class="form-footer">
+                    <router-link to="/khach-hang/dang-nhap" class="login-link">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Đã có tài khoản? Đăng nhập</span>
+                    </router-link>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
+
+
+<script>
+import axios from 'axios';
+
+export default {
+    data() {
+        return {
+            dang_ki: {
+                'email': "",
+                'so_dien_thoai': "",
+                'ho_va_ten': "",
+                'password': "",
+                're_password': "",
+                'ngay_sinh': "",
+            }
+        }
+    },
+
+    methods: {
+        dangKi() {
+            axios
+                .post('http://127.0.0.1:8000/api/khach-hang/dang-ky', this.dang_ki)
+                .then((res) => {
+                    if (res.data.status) {
+                        this.$toast.success(res.data.message);
+                        this.$router.push('/khach-hang/dang-nhap');
+                        this.dang_ki = {
+                            'email': "",
+                            'so_dien_thoai': "",
+                            'ho_va_ten': "",
+                            'password': "",
+                            're_password': "",
+                            'ngay_sinh': "",
+                        }
+                    } else {
+                        this.$toast.error(res.data.message);
+                    }
+                })
+                .catch(error => {
+                    var obj = error.response.data.errors;
+                    var result = Object.keys(obj).map((key) => [key, obj[key]]);
+                    result.forEach((value_1, key_1) => {
+                        var xxx = value_1[1];
+                        xxx.forEach((value, key) => {
+                            this.$toast.error(value);
+                        });
+                    });
+                });
+        }
+    },
+}
+</script>
 <style scoped>
 .register-container {
     min-height: 100vh;
@@ -227,20 +281,36 @@
 
 .login-link:hover {
     transform: translateY(-2px);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Animation keyframes từ component đăng nhập */
 @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 @keyframes pulse {
-    0% { transform: scale(0.95); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(0.95); }
+    0% {
+        transform: scale(0.95);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(0.95);
+    }
 }
 
 /* Responsive */
@@ -262,55 +332,3 @@
     }
 }
 </style>
-
-<script>
-import axios from 'axios';
-
-export default {
-    data() {
-        return {
-            dang_ki: {
-                'email': "",
-                'so_dien_thoai': "",
-                'ho_va_ten': "",
-                'password': "",
-                're_password': "",
-                'ngay_sinh': "",
-            }
-        }
-    },
-
-    methods: {
-        dangKi() {
-            axios
-                .post('http://127.0.0.1:8000/api/khach-hang/dang-ky', this.dang_ki)
-                .then((res) => {
-                    if (res.data.status) {
-                        this.$toast.success(res.data.message);
-						this.$router.push('/khach-hang/dang-nhap');
-                        this.dang_ki = {
-                            'email': "",
-                            'so_dien_thoai': "",
-                            'ho_va_ten': "",
-                            'password': "",
-                            're_password': "",
-                            'ngay_sinh': "",
-                        }
-                    } else {
-                        this.$toast.error(res.data.message);
-                    }
-                })
-                .catch(error => {
-                    var obj = error.response.data.errors;
-                    var result = Object.keys(obj).map((key) => [key, obj[key]]);
-                    result.forEach((value_1, key_1) => {
-                        var xxx = value_1[1];
-                        xxx.forEach((value, key) => {
-                            this.$toast.error(value);
-                        });
-                    });
-                });
-        }
-    },
-}
-</script>
